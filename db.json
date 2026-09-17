@@ -1,0 +1,25 @@
+{
+  "products": [
+    { "id": 1, "name": "T-shirt Vue.js", "price": 24.99, "image": "/images/tshirt.png", "description": "T-shirt en coton bio avec logo Vue" },
+    { "id": 2, "name": "Sweat à capuche Vue.js", "price": 49.99, "image": "/images/tshirt.png", "description": "Sweat à capuche confortable aux couleurs de Vue.js" },
+    { "id": 3, "name": "Mug JavaScript", "price": 14.99, "image": "/images/mug.png", "description": "Mug en céramique pour les pauses café du développeur" },
+    { "id": 4, "name": "Casquette développeur", "price": 19.99, "image": "/images/cap.png", "description": "Casquette ajustable pour afficher son style tech" },
+    { "id": 5, "name": "Sac à dos tech", "price": 59.99, "image": "/images/backpack.png", "description": "Sac à dos pratique pour transporter ordinateur et accessoires" },
+    { "id": 6, "name": "Sticker pack Vue.js", "price": 8.99, "image": "/images/stickers.png", "description": "Pack de stickers colorés pour personnaliser son setup" },
+    { "id": 7, "name": "Carnet de notes codé", "price": 12.50, "image": "/images/notebook.png", "description": "Carnet compact pour noter idées, tâches et extraits de code" },
+    { "id": 8, "name": "Gourde en inox", "price": 22.99, "image": "/images/bottle.png", "description": "Gourde réutilisable en acier inoxydable" },
+    { "id": 9, "name": "Chaussettes pixel", "price": 11.99, "image": "/images/socks.png", "description": "Chaussettes confortables inspirées de l'univers pixel" },
+    { "id": 10, "name": "Hoodie frontend", "price": 54.99, "image": "/images/tshirt.png", "description": "Hoodie doux et chaud pour les longues sessions frontend" },
+    { "id": 11, "name": "Tapis de souris XL", "price": 24.90, "image": "/images/mouse.png", "description": "Grand tapis de souris pour un espace de travail précis" },
+    { "id": 12, "name": "Clé USB développeur", "price": 16.99, "image": "/images/usb.png", "description": "Clé USB compacte pour transporter ses projets" },
+    { "id": 13, "name": "Badge conférence tech", "price": 6.99, "image": "/images/badge.png", "description": "Badge souvenir pour les événements et conférences tech" },
+    { "id": 14, "name": "Poster architecture web", "price": 18.50, "image": "/images/poster.png", "description": "Poster décoratif sur le thème de l'architecture web" },
+    { "id": 15, "name": "Polo Vue.js", "price": 34.99, "image": "/images/tshirt.png", "description": "Polo confortable avec une identité Vue.js discrète" },
+    { "id": 16, "name": "Sweat zippé full-stack", "price": 64.99, "image": "/images/tshirt.png", "description": "Sweat zippé polyvalent pour les développeurs full-stack" },
+    { "id": 17, "name": "Support ordinateur pliable", "price": 29.99, "image": "/images/laptop.png", "description": "Support pliable pour surélever confortablement son ordinateur" },
+    { "id": 18, "name": "Lampe de bureau LED", "price": 39.99, "image": "/images/lamp.png", "description": "Lampe LED réglable pour éclairer son bureau" },
+    { "id": 19, "name": "Bonnet winter coder", "price": 17.99, "image": "/images/cap.png", "description": "Bonnet chaud pour coder confortablement en hiver" },
+    { "id": 20, "name": "Porte-clés terminal", "price": 9.99, "image": "/images/key.png", "description": "Porte-clés compact inspiré de l'univers du terminal" },
+    { "id": 21, "name": "Tote bag open source", "price": 15.99, "image": "/images/totebag.png", "description": "Tote bag réutilisable pour afficher son esprit open source" }
+  ]
+}
