@@ -1,59 +1,173 @@
 # AppShop
 
-This template should help get you started developing with Vue 3 in Vite.
+AppShop est une boutique e-commerce fictive développée avec Vue 3, Vite et Express. Elle permet d’afficher des produits, d’ajouter des articles au panier, de s’inscrire ou de se connecter, puis de passer une commande via Stripe Checkout.
 
-## Recommended IDE Setup
+## Fonctionnalités
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Catalogue de produits
+- Panier avec ajout, suppression et modification des quantités
+- Authentification utilisateur (inscription / connexion / déconnexion)
+- Historique des commandes
+- Paiement en ligne avec Stripe Checkout
+- Support MySQL optionnel avec fallback vers des fichiers JSON
+- API Express pour gérer les utilisateurs et les commandes
 
-## Recommended Browser Setup
+## Stack technique
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3 + Vite
+- TypeScript
+- Express.js
+- Stripe API
+- MySQL2 (optionnel)
+- JSON fallback pour stockage local
 
-## Type Support for `.vue` Imports in TS
+## Prérequis
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Node.js 22 ou plus
+- npm
+- Un compte Stripe avec clé de test
+- Optionnel : MySQL si vous souhaitez utiliser la base de données au lieu du stockage JSON
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+1. Clonez le projet :
 
-## Project Setup
+```bash
+git clone https://github.com/ysaidmohamed/AppShop.git
+cd AppShop
+```
 
-```sh
+2. Installez les dépendances :
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Configurez les variables d’environnement :
 
-```sh
-npm run dev
+```bash
+cp .env.example .env
 ```
 
-### Type-Check, Compile and Minify for Production
+Modifiez ensuite le fichier `.env` avec vos propres valeurs :
 
-```sh
-npm run build
+```env
+STRIPE_SECRET_KEY=sk_test_votre_cle
+PORT=4242
+SESSION_SECRET=votre_secret_local
+DB_HOST=
+DB_PORT=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_CONNECTION_LIMIT=10
 ```
 
-### Stripe Checkout en local
+> Le fichier `.env` contient les vraies clés et ne doit pas être commit.
 
-1. Copiez `.env.example` vers `.env` et remplacez `STRIPE_SECRET_KEY` par votre clé secrète Stripe de test.
-2. Dans un terminal, lancez le serveur Checkout :
+## Lancer l’application
 
-```sh
+### 1. Démarrer le serveur API
+
+```bash
 npm run server
 ```
 
-3. Dans un second terminal, lancez le frontend :
+### 2. Démarrer le frontend Vite
 
-```sh
+Dans un deuxième terminal :
+
+```bash
 npm run dev
 ```
 
-Utilisez ensuite une carte de test Stripe, par exemple `4242 4242 4242 4242`, avec une date future et un CVC quelconque.
+La boutique sera disponible sur :
+
+- Frontend : http://localhost:5173
+- API : http://localhost:4242
+
+## Tests de paiement Stripe
+
+Pour tester le paiement localement :
+
+1. Créez une clé Stripe de test dans votre dashboard
+2. Ajoutez la clé dans le fichier `.env`
+3. Déclenchez un achat depuis l’application
+4. Utilisez une carte de test Stripe, par exemple :
+
+```text
+4242 4242 4242 4242
+```
+
+Avec :
+- date future
+- CVC arbitraire
+
+## Base de données MySQL (optionnelle)
+
+Le projet peut fonctionner avec un stockage local JSON, mais il supporte aussi une base MySQL si vous souhaitez un stockage plus robuste.
+
+Le fichier SQL suivant est fourni :
+
+- [users.sql](users.sql)
+
+Il contient la création de la base `appshop` et les tables nécessaires pour :
+
+- les utilisateurs
+- les commandes
+- les articles de commande
+- les sessions et tokens de sécurité
+
+### Utilisation
+
+1. Connectez-vous à MySQL
+2. Importez le fichier `users.sql`
+3. Renseignez les variables suivantes dans votre `.env` :
+
+```env
+DB_HOST="nomdevotrehost"
+DB_PORT="numerodeport"
+DB_NAME=appshop
+DB_USER="votrenomutilisateur"
+DB_PASSWORD="votremotdepasse"
+DB_CONNECTION_LIMIT=10
+```
+
+Le serveur détectera automatiquement la configuration MySQL et utilisera la base de données correspondante.
+
+## Structure du projet
+
+```text
+AppShop/
+├── src/               # Code frontend Vue
+├── public/            # Fichiers statiques
+├── db.json            # Catalogue produits / données de base
+├── orders.json        # Stockage des commandes en fallback
+├── users.sql          # Script SQL pour initialiser MySQL
+├── server.js          # Serveur Express + Stripe + auth
+├── .env.example       # Exemple de variables d’environnement
+├── .gitignore         # Fichiers ignorés par Git
+├── package.json       # Scripts du projet
+├── vite.config.ts     # Configuration Vite
+├── README.md          # Documentation du projet
+└── index.html         # Point d’entrée HTML
+```
+
+## Scripts disponibles
+
+```bash
+npm run dev
+npm run build
+npm run server
+npm run type-check
+```
+
+## Notes
+
+- Si MySQL n’est pas configuré, l’application fonctionne avec les fichiers JSON de secours.
+- Les sessions sont gérées côté serveur via un jeton stocké en mémoire.
+- Les commandes sont enregistrées après validation du paiement.
+
+## Auteur
+
+Younness Said Mohamed
